@@ -5,28 +5,36 @@ import * as Modernizr from './lib/modernizr'
 
 $(function () {
 
-    console.log('')
+    const disableButton = () => {
+        $('button').text('Cookie is set')
+        $('button').attr('disabled', 'disabled')
+    }
 
-    // const loader = new Loader({
-    //     prependIt: false,
-    //     classOnly: false, // Activer ou non le loader que sur les pages dont le body a une classe spécifique
-    //     bodyClassOnly: 'home', // classe sur le body permettant d'activer le loader
-    //     bgcolor: '#201f20', // Couleur de fond
-    //     barcolor: '#ffffff', // Couleur de la barre de chargement
-    //     infocolor: '#ffffff', // Couleur du texte de chargement
-    //     devMode: true, // Mode developpeur
-    //     animationListener: '', // Classe ou Id sur laquelle on écoute la fin d'une animation CSS
-    //     maxLoadingTime: 4000, // Temps de chargement maximum, pour forcer l'apparition du contenu
-    //     onInit: () => {}, // Fonction déclenchée à l'initialisation du loader
-    //     afterLoad: () => {}
-    // })
-
-    let cookie = new Cookie()
-
-    $(document).ready(function () {
-        cookie.set()
+    const loader = new Loader({
+        devMode: false, // Mode developpeur
+        onInit: () => {}, // Fonction déclenchée à l'initialisation du loader
+        afterLoad: () => {}
     })
 
+    const cookie = new Cookie({
+        is_found: () => {},
+        is_not_found: () => {}
+    })
+
+    const testCookie = new Cookie({
+        is_found: () => { disableButton() },
+        is_not_found: () => {}
+    })
+
+    $(document).ready(() => {
+        cookie.set()
+        loader.loaded()
+
+        $('button').click(() => {
+            testCookie.set()
+            disableButton()
+        })
+    })
 
 })
 

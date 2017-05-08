@@ -1,4 +1,4 @@
-# Pixies Starter Static
+# !(https://github.com/eggxman/starter-wip/blob/master/src/images/icons/logo.svg) Pixies Starter Static
 
 ### What does this starter include ?
 
@@ -19,7 +19,7 @@ Install dependencies
 $ npm install
 ```
 
-*Note: this repository includes a [yarn.lock](https://yarnpkg.com/lang/en/)file*
+*Note: this repository includes a [yarn.lock](https://yarnpkg.com/lang/en/) file*
 
 You're ready to start !
 
@@ -44,6 +44,8 @@ $ npm run build
 ```
 
 It creates a /dist folder at directory root. All your file calls should point on **distributed files**
+
+It also minify your distribution files. Keep it in mind for great performance.
 
 ## Features
 
@@ -73,7 +75,7 @@ This starter includes some usefull libraries :
 This sass library allows you to define variable breakpoints and simplify media-queries syntax
 
 ```scss
-/* _config/_config.scss */
+/* _config/_variables.scss */
 
 $mq-breakpoints: (
 mobile: 640px,

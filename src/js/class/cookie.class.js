@@ -2,7 +2,7 @@ export default class Cookie {
 
     constructor(options) {
 
-        this.options = options
+        this.options = options || {}
         this.name = this.options.name || 'cookie'
         this.value = this.options.value || 'value'
         this.duration = this.options.duration || 15

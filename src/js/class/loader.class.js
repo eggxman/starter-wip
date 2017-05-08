@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-let pfx = ["webkit", "moz", "MS", "o", ""];
+const pfx = ["webkit", "moz", "MS", "o", ""];
 
 function PrefixedEvent(element, type, callback) {
     for (let p = 0; p < pfx.length; p++) {
@@ -14,7 +14,7 @@ function PrefixedEvent(element, type, callback) {
 export default class Loader {
     constructor(options) {
 
-        this.options = options
+        this.options = options || {}
         this.container = this.options.container || document.querySelector('.loader')
         this.prependIt = this.options.prependIt || false
         // Activer ou non le loader que sur les pages dont le body a une classe spécifique
@@ -38,12 +38,10 @@ export default class Loader {
         this.afterLoad = this.options.afterLoad || function() {}
 
         this.loading()
-        this.init_events()
     }
 
 
     init () {
-        console.log('new loader')
 
         let that = this
 
@@ -76,8 +74,6 @@ export default class Loader {
             });
 
         }
-
-        console.log(this.prependIt);
 
         if (this.prependIt) {
 
@@ -122,13 +118,13 @@ export default class Loader {
         this.duration = 1000
 
         if(this.elements.length) {
-            this.percentage = parseInt((this.loadedElements / this.elements) * 100)
+            this.percentage = parseInt((that.loadedElements / that.elements.length) * 100)
         }
 
         $(this.barchargement).stop()
 
         $(this.container).stop()
-            .animate({ percentage: this.percentage}, {
+            .animate({ percentage: that.percentage}, {
                 duration: this.duration,
                 step: this._animate_steps()
         })
@@ -153,6 +149,7 @@ export default class Loader {
         // Selection des images en background-image
         $.each(function() {
             var src = $(this).css('background-image').replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
+            console.log(src);
             if (src && src != 'none') {
                 that.elements = that.elements.add($('<img src="' + src + '"/>'));
             }
@@ -164,12 +161,12 @@ export default class Loader {
         let that = this
         this.percentage = 100
 
-        if(this.container.length) {
-            $(this.infoschargement)
+        if($(this.container).length) {
+            $(that.barchargement)
                 .stop()
-                .animate({ width: this.percentage + '%' }, (this.duration / 2))
+                .animate({ width: that.percentage + '%' }, (that.duration / 2))
 
-            $(this.container)
+            $(that.container)
                 .stop()
                 .animate({ percentage: this.percentage},
                     {
@@ -211,7 +208,7 @@ export default class Loader {
                                         }
 
                                         // Temps quand le chargement est terminé
-                                        let t2 = performance.now();
+                                        that.t2 = performance.now();
 
                                         // Définition du delay en fonction du temps écoulé
                                         let delayApparition;
@@ -234,6 +231,32 @@ export default class Loader {
                                     });
                                 }
 
+                            } else {
+                                if (that.devMode) {
+                                    console.log('Event AnimationEnd. Animation CSS terminée.');
+                                }
+
+                                // Temps quand le chargement est terminé
+                                that.t3 = performance.now();
+
+                                // Définition du delay en fonction du temps écoulé
+                                let delayApparition;
+                                if ((that.t3 - that.t0) > that.minLoadingTime) {
+                                    delayApparition = 0;
+                                } else{
+                                    delayApparition = that.minLoadingTime-(that.t3 - that.t0);
+                                };
+
+                                that.loadingFinished = true;
+
+                                $(that.container).delay(delayApparition).fadeOut(800, () => {
+
+                                    // Animation complete
+                                    that.afterLoad();
+                                    that.remove();
+
+                                });
+
                             }
                         }
                     })
@@ -242,9 +265,9 @@ export default class Loader {
                 console.log('no div #loader');
             }
 
-            this.afterLoad();
-            this.remove()
-            this.loadingFinished = true;
+            that.afterLoad();
+            that.remove()
+            that.loadingFinished = true;
         }
 
     }
@@ -255,16 +278,10 @@ export default class Loader {
         document.body.classList.add('loading-finished')
     }
 
-    init_events () {
+    _animate_steps() {
         let that = this
-        window.onload = () => {
-            that.loaded()
-        }
-    }
-
-    _animate_steps(now) {
-        $(this.infoschargement).text('Chargement ' + parseInt(now) + '%');
-        $(this.barchargement).css({ 'width': parseInt(now) + '%' });
+        $('.loader_info').text('Chargement ' + Math.ceil(parseInt(that.percentage)) + '%')
+        $(that.barchargement).css({ 'width': parseInt(that.percentage) + '%' })
     }
 
 }

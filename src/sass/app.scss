@@ -7,7 +7,7 @@ Version: 1.0
 */
 
 /* # Config */
-@import '_config/config';
+@import '_config/variables';
 
 /* # Sass plugins */
 @import '_plugins/bootstrap/mixins';
@@ -19,9 +19,8 @@ Version: 1.0
 @import "_plugins/pxs/loader"; // Pixies
 
 /* # Config */
-@import '_config/functions';
 @import '_config/mixins';
-@import "_config/fonts";
+@import '_config/fonts';
 @import '_config/fonts-mixins';
 
 /* # Project */

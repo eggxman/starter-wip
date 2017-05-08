@@ -17,7 +17,7 @@ const postcssConfig = {
 
 const config = {
     entry: {
-        app: ['./src/js/app.js', './src/sass/app.scss']
+        app: settings.entry
     },
     output: {
         filename: 'dist/javascript/bundle.js',
@@ -83,7 +83,7 @@ const config = {
     ],
     devServer: {
         headers: { "Access-Control-Allow-Origin": "*" },
-        port: 7000,
+        port: settings.port,
         open: true,
         publicPath: '/',
         disableHostCheck: true,
@@ -99,6 +99,7 @@ if(process.env.NODE_ENV === 'production') {
             cssProcessorOptions: {
                 safe: true,
             },
+
         })
     )
 
