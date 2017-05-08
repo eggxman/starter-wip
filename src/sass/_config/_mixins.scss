@@ -65,6 +65,7 @@ https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-5
 @mixin stretch($length: 0)
 {
 	position: absolute;
+
 	left:   $length;
 	top:    $length;
 	bottom: $length;

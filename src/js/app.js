@@ -5,6 +5,8 @@ import * as Modernizr from './lib/modernizr'
 
 $(function () {
 
+    console.log('')
+
     // const loader = new Loader({
     //     prependIt: false,
     //     classOnly: false, // Activer ou non le loader que sur les pages dont le body a une classe spécifique
