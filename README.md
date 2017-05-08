@@ -1,4 +1,4 @@
-# ![Pixies logo](./src/images/icons/logo.svg) Pixies Starter Static
+# ![Pixies logo](https://github.com/eggxman/starter-wip/src/images/icons/logo.svg) Pixies Starter Static
 
 ### What does this starter include ?
 
