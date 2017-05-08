@@ -19,7 +19,7 @@ Install dependencies
 $ npm install
 ```
 
-*Note: this repository includes a[yarn.lock](https://yarnpkg.com/lang/en/)file*
+*Note: this repository includes a [yarn.lock](https://yarnpkg.com/lang/en/)file*
 
 You're ready to start !
 
@@ -43,14 +43,13 @@ To create distribution folder use :
 $ npm run build
 ```
 
-It creates a /dist folder at directory root. All your file calls should point on /dist
+It creates a /dist folder at directory root. All your file calls should point on **distributed files**
 
 ## Features
 
 This starter embed some cool features that you may be willing to use on development :)
 
 ### SCSS
-
 
 Every .scss file should be imported in app.scss
 
@@ -62,7 +61,7 @@ Every .scss file should be imported in app.scss
 @import "_project/04_page/*";
 ```
 
-*Note: Files are globally imported thanks to[import-glob-loader](https://www.npmjs.com/package/import-glob-loader)*
+*Note: Files are globally imported thanks to [import-glob-loader](https://www.npmjs.com/package/import-glob-loader)*
 
 This starter includes some usefull libraries :
 * Bootstrap
@@ -77,11 +76,11 @@ This sass library allows you to define variable breakpoints and simplify media-q
 /* _config/_config.scss */
 
 $mq-breakpoints: (
-	mobile: 640px,
-	tablet: 768px,
-	desktop: 1024px,
-	wide: 1366px,
-	xlarge: 1440px
+mobile: 640px,
+tablet: 768px,
+desktop: 1024px,
+wide: 1366px,
+xlarge: 1440px
 );
 ```
 ```scss
@@ -98,7 +97,7 @@ $mq-breakpoints: (
 }
 ```
 
-*Full documentation available[here](https://github.com/sass-mq/sass-mq)*
+*Full documentation available [here](https://github.com/sass-mq/sass-mq)*
 
 #### Fonts mixin
 
@@ -122,4 +121,41 @@ Then call
 }
 ```
 
-**Made with love at Pixies Agency**
+### Javascript
+
+Every .js file should be imported in app.js file.
+
+This starter includes :
+* Modernizr
+* jQuery
+* And some usefull custom ES6 classes 
+    * Class to easily handles cookies
+    * ~~Class to create animated loader~~
+    
+#### Cookie.class
+
+This class allows you to handle cookies very easily
+
+You can set a cookie on a DOM event (like closing the mandatory cookie band). And launch a callback function either the cookie has been found or not.
+
+```javascript
+import Cookie from '../class/cookie.class'
+
+let cookie = new Cookie({
+    is_found: () => {console.log('the cookie has been found')}
+    is_not_found: () => {console.log('the cookie hasn't been found)}
+})
+    
+$(document).ready(function () {
+    // Set the cookie on any DOM event.
+    cookie.set()
+})
+```
+
+#### Animated Loader
+
+*Coming soon*
+
+___
+
+**Made with :yellow_heart: at Pixies Agency**

@@ -21,6 +21,12 @@ $(function () {
     //     afterLoad: () => {}
     // })
 
+    let cookie = new Cookie()
+
+    $(document).ready(function () {
+        cookie.set()
+    })
+
 
 })
 
