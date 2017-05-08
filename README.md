@@ -164,13 +164,12 @@ You just need to create a Loader instance :
 import Loader from './class/loader.class'
 
 const loader = new Loader({
-        devMode: false, // Mode developpeur
-        onInit: () => {}, // Fonction déclenchée à l'initialisation du loader
-        afterLoad: () => {}
+        devMode: false,
+        onInit: () => {}, // Triggers on loader initialization
+        afterLoad: () => {} // Triggers when page is loaded
     })
 ```
 
-This loader has 2 callbacks which will be triggered when the loader starts and when it finishes.
 
 *More info on [Loader options](src/js/class/loader.class.js)*
 
