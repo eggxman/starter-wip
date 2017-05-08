@@ -38,6 +38,7 @@ export default class Loader {
         this.afterLoad = this.options.afterLoad || function() {}
 
         this.loading()
+        this.init_events()
     }
 
 
@@ -276,6 +277,13 @@ export default class Loader {
         document.querySelector('.loader').parentNode.removeChild(this.container)
         document.body.classList.remove('page-is-loading')
         document.body.classList.add('loading-finished')
+    }
+
+    init_events() {
+        let that = this
+        $(document).ready(() => {
+            that.loaded()
+        })
     }
 
     _animate_steps() {

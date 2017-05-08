@@ -28,7 +28,6 @@ $(function () {
 
     $(document).ready(() => {
         cookie.set()
-        loader.loaded()
 
         $('button').click(() => {
             testCookie.set()

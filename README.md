@@ -1,4 +1,4 @@
-# ![Pixies logo](https://github.com/eggxman/starter-wip/src/images/icons/logo.svg) Pixies Starter Static
+# Pixies Starter Static
 
 ### What does this starter include ?
 
@@ -78,11 +78,11 @@ This sass library allows you to define variable breakpoints and simplify media-q
 /* _config/_variables.scss */
 
 $mq-breakpoints: (
-mobile: 640px,
-tablet: 768px,
-desktop: 1024px,
-wide: 1366px,
-xlarge: 1440px
+  mobile: 640px,
+  tablet: 768px,
+  desktop: 1024px,
+  wide: 1366px,
+  xlarge: 1440px
 );
 ```
 ```scss
@@ -132,7 +132,7 @@ This starter includes :
 * jQuery
 * And some usefull custom ES6 classes 
     * Class to easily handles cookies
-    * ~~Class to create animated loader~~
+    * Class to create animated loader
     
 #### Cookie.class
 
@@ -156,7 +156,23 @@ $(document).ready(function () {
 
 #### Animated Loader
 
-*Coming soon*
+This class makes it easy to display a loader that will disappear only when $(document).ready is triggered
+
+You just need to create a Loader instance :
+
+```js
+import Loader from './class/loader.class'
+
+const loader = new Loader({
+        devMode: false, // Mode developpeur
+        onInit: () => {}, // Fonction déclenchée à l'initialisation du loader
+        afterLoad: () => {}
+    })
+```
+
+This loader has 2 callbacks which will be triggered when the loader starts and when it finishes.
+
+*More info on [Loader options](src/js/class/loader.class.js)*
 
 ___
 
