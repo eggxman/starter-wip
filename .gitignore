@@ -1,0 +1,16 @@
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.idea
+node_modules
+npm-debug.log
+bower_components
+test/bower_components
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/*

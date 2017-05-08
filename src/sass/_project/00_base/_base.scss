@@ -1,0 +1,147 @@
+/* # Base */
+
+/*****************/
+/******HTML5 Elements*****/
+/*****************/
+@at-root{
+
+	* {
+	  -webkit-box-sizing: border-box;
+	     -moz-box-sizing: border-box;
+	          box-sizing: border-box;
+	}
+
+	html
+	{
+		font-size: 62.5%;
+	  	-webkit-font-smoothing: antialiased;
+		height: 200rem;
+	}
+
+	body {
+		@include font-body-text();
+		color: $body-text;
+	}
+
+
+	*, *::before, *::after
+	{
+	    background-repeat: no-repeat;
+	}
+
+
+	h1,h2,h3,h4
+	{
+		margin: 0;
+	}
+
+
+	p
+	{
+		margin:0;
+	}
+
+
+	svg,img
+	{
+		width: 100%;
+		max-width:100%;
+	}
+
+
+	ul
+	{
+		margin:0;
+		padding:0;
+	}
+
+
+	li
+	{
+		list-style: none
+	}
+
+
+	a
+	{
+		text-decoration:none;
+		color: inherit;
+		&:hover{
+			text-decoration: none;
+		}
+	}
+
+
+	blockquote
+	{
+		padding:0;
+		margin:0;
+	}
+
+	button:focus,
+	input:focus {
+		outline:0;
+	}
+
+}
+
+
+
+
+/*****************/
+/****** MAIN *****/
+/*****************/
+
+.container {
+	max-width: 1170px;
+	margin: 0 auto;
+}
+
+
+.row {
+	clear: both;
+	&::before {
+		display: table;
+		content: ' ';
+	}
+	&::after {
+		content: ' ';
+		display: table;
+		clear: both;
+	}
+	&-relative {
+		position: relative;
+	}
+}
+
+.html {
+	overflow: hidden;
+}
+
+.v-container {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+.v-align {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+
+/*****************/
+/****** USEFUL CLASSES *****/
+/*****************/
+
+.fullheight {
+	height: 100vh;
+}
+
+.valign{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: flex-start;
+}
+

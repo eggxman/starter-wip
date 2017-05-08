@@ -1,0 +1,26 @@
+/* https://github.com/sass-mq/sass-mq */
+
+$mq-breakpoints: (
+	mobile: 640px,
+	tablet: 768px,
+	desktop: 1024px,
+	wide: 1366px,
+	xlarge: 1440px
+);
+
+/****************/
+/* # Variables */
+/****************/
+
+// Fonts
+$font: sans-serif !default;
+$font-regular: 'Open Sans', sans-serif;
+
+// Colors : color name OSEF
+$white: #fff;
+$black: #212126;
+$pure-black: #000;
+$body-text: #212121;
+$grey: #aeaeae;
+
+$grey-loader: #f7f7f7;

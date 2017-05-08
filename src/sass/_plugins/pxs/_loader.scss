@@ -1,0 +1,39 @@
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $grey;
+  z-index: 100;
+
+  &_logo {
+    width: 8.5rem;
+    height: 8.5rem;
+    background-image: url(../images/icons/logo.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+  }
+
+  &_bar {
+    position: fixed;
+    height: 5px;
+    width: 0;
+    top: 0;
+    left: 0;
+    background-color: $white;
+  }
+
+  &_info {
+    font-size: 1.2rem;
+    text-align: center;
+    color: $white;
+  }
+
+}
+
+.page-is-loading {
+  overflow: hidden;
+}

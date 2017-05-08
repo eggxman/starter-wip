@@ -1,0 +1,32 @@
+/*!
+Theme Name: Nom du projet
+Theme URI: http://example.com
+Author: Pixies Agency
+Author URI:
+Version: 1.0
+*/
+
+/* # Config */
+@import '_config/config';
+
+/* # Sass plugins */
+@import '_plugins/bootstrap/mixins';
+@import '_plugins/bootstrap/variables';
+@import '_plugins/bootstrap/responsive-utilities';
+@import '_plugins/bootstrap/grid';
+@import '_plugins/normalize/normalize'; //Normalize
+@import '_plugins/sass-mq/_mq'; //MQ
+@import "_plugins/pxs/loader"; // Pixies
+
+/* # Config */
+@import '_config/functions';
+@import '_config/mixins';
+@import "_config/fonts";
+@import '_config/fonts-mixins';
+
+/* # Project */
+@import "_project/00_base/*";
+@import "_project/01_components/*";
+@import "_project/02_modules/*";
+@import "_project/03_layout/*";
+@import "_project/04_page/*";

@@ -1,0 +1,9 @@
+.article {
+
+  width: 100%;
+
+  @include mq($from: tablet) {
+    width: 50%;
+  }
+
+}
