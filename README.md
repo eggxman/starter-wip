@@ -9,7 +9,7 @@ This starter allows you to quickly start any web application using scss, javascr
 Clone this repository
 
 ``` sh
-$ git clone {url} my-directory
+$ git clone https://github.com/eggxman/starter-wip.git my-directory
 $ cd my-directory
 ```
 
