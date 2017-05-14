@@ -89,6 +89,11 @@ const config = {
         disableHostCheck: true,
         watchContentBase: true,
         contentBase: path.resolve(__dirname, './'),
+        // proxy: {
+        //     '/path_to_folder': {
+        //         target: settings.proxy
+        //     }
+        // }
     },
 }
 

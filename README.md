@@ -35,6 +35,21 @@ $ npm run dev
 
 The server listens to every change in .html/.php, .scss and .js files and reloads your browser on save.
 
+#### Wordpress development
+
+Webpack-dev-server allows you to set up a proxy to have live reload on wordpress theme development.
+To enable this feature you just have to uncomment those lines in webpack.config.js
+
+```js
+proxy: {
+        '/path_to_folder': {
+        target: settings.proxy
+    }
+}
+```
+
+Then change proxy variable in settings.js to your vhost name.
+
 ### Production 
 
 To create distribution folder use : 
