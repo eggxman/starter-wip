@@ -188,6 +188,14 @@ const loader = new Loader({
 
 *More info on [Loader options](src/js/class/loader.class.js)*
 
+
+## TODO
+
+- [ ] Loader.class.js on_loading callback
+- [ ] Some utils & js snippets
+- [ ] Usefull CSS Classes 
+- [ ] External server URL (--host ip?)
+
 ___
 
 **Made with :yellow_heart: at Pixies Agency**
