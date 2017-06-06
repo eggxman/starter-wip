@@ -34,8 +34,9 @@ export default class Loader {
         this.minLoadingTime = this.options.minLoadingTime || 0 // Temps de chargement minimum, si aucun écouteur d'animation n'est
         // définit
         this.maxLoadingTime = this.options.maxLoadingTime || 0 // Temps de chargement maximum, pour forcer l'apparition du contenu
-        this.onInit = this.options.onInit || function() {} // Fonction déclenchée à l'initialisation du loader
-        this.afterLoad = this.options.afterLoad || function() {}
+        this.on_init = this.options.on_init || function() {} // Fonction déclenchée à l'initialisation du loader
+        this.on_loading = this.options.on_loading || function (now, fx) {},
+        this.after_load = this.options.after_load || function() {}
 
         this.loading()
         this.init_events()
@@ -104,7 +105,7 @@ export default class Loader {
         };
 
         // à la fin
-        this.onInit()
+        this.on_init()
     }
 
 
@@ -127,17 +128,15 @@ export default class Loader {
         $(this.container).stop()
             .animate({ percentage: that.percentage}, {
                 duration: this.duration,
-                step: this._animate_steps()
+                step: this._animate_steps(that.percentage)
         })
 
 
         if (this.elements.length) {
 
             $(this.elements).on('load', function() {
-                console.log($(this));
                 $(this).off('load');
                 that.loadedElements++;
-                console.log(that.loadedElements);
                 that.loading()
             });
         }
@@ -150,7 +149,6 @@ export default class Loader {
         // Selection des images en background-image
         $.each(function() {
             var src = $(this).css('background-image').replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
-            console.log(src);
             if (src && src != 'none') {
                 that.elements = that.elements.add($('<img src="' + src + '"/>'));
             }
@@ -172,7 +170,7 @@ export default class Loader {
                 .animate({ percentage: this.percentage},
                     {
                         duration: (this.duration/ 2),
-                        step: this._animate_steps,
+                        step: this._animate_steps(that.percentage),
                         complete: () => {
                             if(that.devMode) {
                                 console.log('chargementTermine')
@@ -196,7 +194,7 @@ export default class Loader {
 
                                     $(that.container).delay(delayApparition).fadeOut(800, () => {
 
-                                        that.afterLoad();
+                                        that.after_load();
                                         that.remove()
 
                                     });
@@ -224,7 +222,7 @@ export default class Loader {
                                         $(that.container).delay(delayApparition).fadeOut(800, () => {
 
                                             // Animation complete
-                                            that.afterLoad();
+                                            that.after_load();
                                             that.remove();
 
                                         });
@@ -253,7 +251,7 @@ export default class Loader {
                                 $(that.container).delay(delayApparition).fadeOut(800, () => {
 
                                     // Animation complete
-                                    that.afterLoad();
+                                    that.after_load();
                                     that.remove();
 
                                 });
@@ -266,7 +264,7 @@ export default class Loader {
                 console.log('no div #loader');
             }
 
-            that.afterLoad();
+            that.after_load();
             that.remove()
             that.loadingFinished = true;
         }
@@ -286,10 +284,11 @@ export default class Loader {
         })
     }
 
-    _animate_steps() {
+    _animate_steps(now, fx) {
         let that = this
         $('.loader_info').text('Chargement ' + Math.ceil(parseInt(that.percentage)) + '%')
         $(that.barchargement).css({ 'width': parseInt(that.percentage) + '%' })
+        this.on_loading(that.percentage, fx)
     }
 
 }

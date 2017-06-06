@@ -12,8 +12,9 @@ $(function () {
 
     const loader = new Loader({
         devMode: false, // Mode developpeur
-        onInit: () => {}, // Fonction déclenchée à l'initialisation du loader
-        afterLoad: () => {}
+        on_init: () => {}, // Fonction déclenchée à l'initialisation du loader
+        on_loading: (now) => {},
+        after_load: () => {}
     })
 
     const cookie = new Cookie({
