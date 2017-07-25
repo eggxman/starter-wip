@@ -16,7 +16,7 @@ $ cd my-directory
 Install dependencies 
 
 ``` sh
-$ npm install
+$ yarn install
 ```
 
 *Note: this repository includes a [yarn.lock](https://yarnpkg.com/lang/en/) file*
@@ -49,6 +49,16 @@ proxy: {
 ```
 
 Then change proxy variable in settings.js to your vhost name.
+
+#### External URL
+
+You can specify your ip address to locally access your application from any external device in settings.js
+
+*Note: type ipconfig in your terminal and type your ipv4 address*
+
+#### HTTPS support 
+
+Set either https support or not depending on your needs. Just set https variable to true in settings.js to enable this feature. (false by default)
 
 ### Production 
 
@@ -194,7 +204,7 @@ const loader = new Loader({
 - [ ] Loader.class.js on_loading callback
 - [ ] Some utils & js snippets
 - [ ] Usefull CSS Classes 
-- [ ] External server URL (--host ip?)
+- [x] External server URL (--host ip?)
 
 ___
 
