@@ -9,7 +9,7 @@ This starter allows you to quickly start any web application using scss, javascr
 Clone this repository
 
 ``` sh
-$ git clone https://github.com/eggxman/starter-wip.git my-directory
+$ git clone git@bitbucket.org:pixiesagency/webpack-static.git my-directory
 $ cd my-directory
 ```
 
@@ -198,6 +198,46 @@ const loader = new Loader({
 
 *More info on [Loader options](src/js/class/loader.class.js)*
 
+## Third-party libraries troubleshooting
+
+You may have some incompatibilities between webpack and some well-known third party libraries. 
+Here are listed the fixes we found to use our favourites libraries.
+
+### Snapsvg
+
+Import snap with this snippet
+
+```js
+const Snap = require(`imports-loader?this=>window,fix=>module.exports=0!snapsvg/dist/snap.svg.js`);
+```
+
+### GSAP
+
+importing GSAP will shoot you an error in logs saying that TweenLite is required.
+
+Just add these snippets in webpack.config.js 
+
+```js 
+externals: {
+    'TweenLite': 'TweenLite'
+},
+```
+
+*in config object*
+
+and 
+
+```js
+TweenLite: "TweenLite"
+```
+
+*in webpack.ProvidePlugin instance*
+
+Then you can import modules from GSAP by doing
+
+```js
+import { TweenMax } from 'gsap'
+```
 
 ## TODO
 

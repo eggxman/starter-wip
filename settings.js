@@ -4,5 +4,5 @@ module.exports = {
     port: 7000,
     proxy: "http://domain.local",
     https: false,
-    host: '192.168.0.x'
+    host: '192.168.0.45'
 }
