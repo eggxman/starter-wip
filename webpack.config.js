@@ -78,10 +78,15 @@ const config = {
             'process.env': {
                 'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
             }
+        }),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
         })
-
     ],
     devServer: {
+        https: settings.https,
         headers: { "Access-Control-Allow-Origin": "*" },
         port: settings.port,
         open: true,
@@ -93,7 +98,8 @@ const config = {
         //     '/path_to_folder': {
         //         target: settings.proxy
         //     }
-        // }
+        // },
+        host: settings.host
     },
 }
 
